@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CSV_Changer": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\jarek\\source\\repos\\CSV_Changer\\CSV_Changer"
+    }
+  }
+}
