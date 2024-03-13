@@ -7,6 +7,7 @@ var services = new ServiceCollection();
 
 services.AddSingleton<IApp, App>();
 services.AddSingleton<ICSVReader, CSVReader>();
+services.AddSingleton<ICSVWriter, CSVWriter>();
 
 var serviceProvider = services.BuildServiceProvider();
 var app = serviceProvider.GetService<IApp>()!;

@@ -5,20 +5,19 @@ namespace CSV_Changer
     public class App : IApp
     {
         string SourcePath = $@"{AppDomain.CurrentDomain.BaseDirectory}\Source\Test.csv";
+        string ResaultPath = $@"{AppDomain.CurrentDomain.BaseDirectory}\Resault\Test_Resault.csv";
+
         private readonly ICSVReader _reader;
-        public App(ICSVReader reader) 
+        private readonly ICSVWriter _writer;
+        public App(ICSVReader reader, ICSVWriter writer) 
         {
             _reader = reader;
+            _writer = writer;
         }
         public void Run()
         {
             var csvfile = _reader.ReadCSV(SourcePath);
-            foreach (var item in csvfile) 
-            {
-                Console.WriteLine(item.TOW_NAZWA);
-                Console.WriteLine(item.TOW_PRO);
-                Console.WriteLine(item.TOW_CEN);
-            }
+            _writer.WriteCSVFile(csvfile, ResaultPath);
         }
     }
 }
