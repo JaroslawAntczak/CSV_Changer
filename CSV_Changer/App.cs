@@ -4,8 +4,8 @@ namespace CSV_Changer
 {
     public class App : IApp
     {
-        string SourcePath = $@"{AppDomain.CurrentDomain.BaseDirectory}\Source\Test.csv";
-        string ResaultPath = $@"{AppDomain.CurrentDomain.BaseDirectory}\Resault\Test_Resault.csv";
+        string SourcePath = $@"{AppDomain.CurrentDomain.BaseDirectory}\Source\";
+        string ResaultPath = $@"{AppDomain.CurrentDomain.BaseDirectory}\Resault\";
 
         private readonly ICSVReader _reader;
         private readonly ICSVWriter _writer;

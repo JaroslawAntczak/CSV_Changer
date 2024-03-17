@@ -1,23 +1,29 @@
 ﻿using CSV_Changer.Extension;
 using CSV_Changer.Items;
+using System.IO;
 
 namespace CSV_Changer.Changer
 {
     public class CSVReader : ICSVReader
     {
-        public List<CSVFileLine> ReadCSV(string path)
+        public IEnumerable<CSVFileLine> Lines;
+        public List<CSVFileLine> ReadCSV(string folderPath)
         {
-            if(!File.Exists(path)) 
+            if (!Directory.Exists(folderPath))
             {
-                return new List<CSVFileLine>(); 
+                return new List<CSVFileLine>();
             }
             else
             {
-                var CSVFile = File.ReadAllLines(path)
+                string[] files = Directory.GetFiles(folderPath);
+
+                foreach (string filePath in files)
+                {
+                    Lines = File.ReadAllLines(filePath)
                     .Where(line => line.Length > 0)
                     .ToCToCSVFileLine();
-
-                return CSVFile.ToList();
+                }
+                return Lines.ToList();
             }
         }
     }

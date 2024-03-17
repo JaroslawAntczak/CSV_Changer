@@ -9,6 +9,6 @@ namespace CSV_Changer.Changer
 {
     public interface ICSVWriter
     {
-        void WriteCSVFile(List<CSVFileLine> lines, string path);
+        public void WriteCSVFile(List<CSVFileLine> lines, string path);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CSV_Changer.Items;
 using CsvHelper;
+using CsvHelper.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,10 +12,14 @@ namespace CSV_Changer.Changer
 {
     public class CSVWriter : ICSVWriter
     {
+        CsvConfiguration config = new CsvConfiguration(CultureInfo.InvariantCulture)
+        {
+            Delimiter = ";"
+        };
         public void WriteCSVFile(List<CSVFileLine> lines, string path)
         {
-            using (var writer = new StreamWriter(path))
-            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            using (var writer = new StreamWriter($"{path}Wholesale_Pricing_{DateTime.Today.ToString("MM-dd-yyyy")}.csv"))
+            using (var csv = new CsvWriter(writer, config))
             {
                 csv.WriteRecords(lines);
             }
